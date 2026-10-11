@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#090909">
+<title>من جوشن إلى تنسنيم ❤️</title>
+<style>
+:root{--red:#e31b3d;--deep:#080808;--rose:#ff526d;--paper:#fff7f5}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;color:#fff;background:radial-gradient(ellipse at top,#301018 0%,#10090c 42%,#050505 100%);font-family:Tahoma,Arial,sans-serif;overflow-x:hidden}
+main{width:min(720px,100%);margin:auto;padding:38px 20px 60px;text-align:center;position:relative;z-index:1}
+.eyebrow{color:#ff8a9b;letter-spacing:2px;font-size:13px}
+h1{font-size:clamp(30px,7vw,48px);margin:13px 0 8px;color:#fff}
+h1 span{color:var(--rose)}
+.subtitle{color:#d9c7cb;line-height:1.9;margin:0 auto 30px;max-width:520px}
+.heart{color:var(--red);font-size:24px;animation:pulse 1.6s infinite;display:inline-block}
+.envelope-wrap{margin:20px auto 14px;max-width:360px;cursor:pointer;outline:none}
+.envelope{height:220px;position:relative;filter:drop-shadow(0 18px 30px #0009);transition:transform .3s}
+.envelope-wrap:hover .envelope{transform:translateY(-4px)}
+.env-back{position:absolute;inset:18px 12px 0;background:#7f1025;border-radius:10px}
+.letter-peek{position:absolute;left:30px;right:30px;bottom:23px;height:150px;background:var(--paper);border-radius:5px 5px 0 0;transition:transform .8s ease;display:flex;align-items:center;justify-content:center;color:#9e1530;font-size:26px}
+.env-front{position:absolute;inset:65px 12px 0;background:linear-gradient(145deg,#b51633,#650b20);clip-path:polygon(0 0,50% 58%,100% 0,100% 100%,0 100%);border-radius:0 0 10px 10px}
+.env-flap{position:absolute;top:18px;left:12px;right:12px;height:120px;background:linear-gradient(160deg,#f03756,#97132b);clip-path:polygon(0 0,100% 0,50% 100%);transform-origin:top;transition:transform .8s ease;z-index:3}
+.seal{position:absolute;z-index:4;top:91px;left:calc(50% - 25px);width:50px;height:50px;border-radius:50%;display:grid;place-items:center;background:#19080c;border:2px solid #ff8798;color:#ff647d;font-size:25px;transition:opacity .25s}
+.open .env-flap{transform:rotateX(180deg);z-index:0}
+.open .letter-peek{transform:translateY(-65px)}
+.open .seal{opacity:0}
+.hint{font-size:14px;color:#f0a7b3;margin:10px 0 26px}
+button{font:inherit;cursor:pointer}
+.open-btn,.copy-btn{border:1px solid #ff6078;background:#b51130;color:#fff;border-radius:999px;padding:13px 24px;box-shadow:0 7px 25px #d10e3033}
+.open-btn:hover,.copy-btn:hover{background:#d0193c}
+.message{display:none;text-align:right;background:linear-gradient(145deg,#fffaf8,#f7e9e9);color:#291117;border:1px solid #ffb2bf;border-radius:18px;padding:24px 22px;margin:30px 0 0;box-shadow:0 15px 50px #0008;line-height:2.15;white-space:normal}
+.message.visible{display:block;animation:appear .8s ease both}
+.message h2{text-align:center;color:#a70d2c;margin:0 0 16px;font-size:25px}
+.message p{margin:0 0 16px}
+.signature{text-align:center;color:#a70d2c;font-weight:bold;font-size:20px;margin-top:24px!important}
+footer{margin-top:34px;color:#9c858a;font-size:12px}
+.spark{position:fixed;pointer-events:none;z-index:0;color:#e51d40;opacity:.2;animation:float 8s linear infinite}
+@keyframes pulse{50%{transform:scale(1.18);text-shadow:0 0 20px #f22}}
+@keyframes appear{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+@keyframes float{from{transform:translateY(110vh) rotate(0deg)}to{transform:translateY(-15vh) rotate(35deg)}}
+@media(max-width:420px){main{padding:30px 15px 45px}.message{padding:20px 16px}.envelope{height:200px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="spark" style="left:8%;animation-delay:-2s;font-size:24px">♥</div>
+<div class="spark" style="left:87%;animation-delay:-5s;font-size:17px">♥</div>
+<div class="spark" style="left:72%;animation-delay:-1s;font-size:27px">♡</div>
+<main>
+  <div class="eyebrow">A LITTLE LOVE LETTER</div>
+  <h1>من <span>جوشن</span> إلى <span>تنسنيم</span></h1>
+  <div class="heart">♥</div>
+  <p class="subtitle">إلى صاحبة المكان الحلو بگلبي…<br>هاي رسالة صغيرة، بس وراها مشاعر هواية.</p>
+
+  <div class="envelope-wrap" id="envelopeWrap" role="button" tabindex="0" aria-label="افتحي ظرف الحب">
+    <div class="envelope" id="envelope">
+      <div class="env-back"></div>
+      <div class="letter-peek">إلجِ من گلبي ♥</div>
+      <div class="env-front"></div>
+      <div class="env-flap"></div>
+      <div class="seal">♥</div>
+    </div>
+  </div>
+  <p class="hint" id="hint">اضغطي على الظرف حتى تفتحين رسالتج ❤️</p>
+  <button class="open-btn" id="openBtn">افتحي رسالتج يا تنسنيم ♥</button>
+
+  <article class="message" id="message">
+    <h2>إلى تنسنيم، من جوشن ❤️</h2>
+    <p>تنسنيم حبيبتي، يمكن من أريد أكتب لج عن اللي بگلبي، أحتار منين أبدي وشلون أرتّب حچي هواية بداخلي. أحس كل الكلام الحلو قليل عليج، وكل رسالة مهما طالت تبقى ما توصل كل اللي أريد أوصّله إلج. بس اليوم أريد أكتب لج من گلبي، وأخلّي هالكلمات ذكرى حلوة إلج، تقرينها وتبتسمين وتعرفين شكد إنتِ غالية عندي.</p>
+    <p>يا تنسنيم، وجودج بحياتي مو شي عادي بالنسبة إلي. صرتِ من الناس اللي مجرد ما أشوف اسمهم على الشاشة تتغيّر نفسيتي وأبتسم من دون ما أحس. رسالتج إلها فرحة خاصة، وحچيچ إله مكانه، وحتى التفاصيل الصغيرة اللي يمكن إنتِ ما تنتبهين إلها، آني أتذكرها لأنّها تخصج إنتِ.</p>
+    <p>أحب عفويتج، وأحب أسلوبج، وأحب ضحكتج اللي أتمنى دوم تبقى بوجهج. أحب من تحچين عن يومج، ومن تشاركينّي الأشياء اللي تفرحج، وحتى من تحتاجين أحد يسمعج. أتمنى أكون شخص ترتاحين بالحچي وياه، وتكدرين تكونين على طبيعتج من دون خوف أو تكلّف.</p>
+    <p>تنسنيم، لو أگدر أخليج تشوفين نفسج بعيوني، جان عرفتي شكد أشوفج مميزة. مو لأن لازم تكونين مثالية، ولا لأن لازم تسوين شي حتى تستحقين الحب؛ أحبج لأنج إنتِ، بطبيعتج وبكل التفاصيل اللي تكوّن شخصيتج. وأتمنى دوم تتذكرين إن قيمتج كبيرة، وإنج تستاهلين الحنية والاحترام والفرح.</p>
+    <p>آني ما أريد حبي إلج يكون مجرد كلام مرتب ينكتب وينقري وبعدين يروح. أريد أخليج تحسين بيه من اهتمامي، من صدقي وياج، من احترامي إلج، ومن وقوفي يمج بالوقت اللي تحتاجين بيه كلمة طيبة. وإذا صار يومج متعب، أتمنى أگدر أهوّن عليج ولو بشي بسيط، وإذا فرحانة، أتمنى أكون من الناس اللي يفرحون لفرحتج من كل گلـبهم.</p>
+    <p>أريد نجمع ذكريات حلوة، سوالف نرجع نتذكرها ونضحك، ومواقف بسيطة تصير غالية لأن عشناها سوه. ما أحتاج كل يوم يكون مثالي؛ يكفيني يكون بيناتنا صدق وتفاهم واحترام، ونحچي لبعض بوضوح، ونحافظ على هالشي الحلو اللي يجمعنا.</p>
+    <p>يا أحلى تنسنيم، إذا سألتيني شنو مكانج عندي، راح أگولج إنج إنسانة عزيزة على گلبي، وإن وجودج يضيف لأيامي فرحة ما أريد أستهين بيها. وإذا سألتيني شنو أتمنى إلج، أتمنى لج راحة بال، وأيام تضحكين بيها من قلبج، وأحلام تتحقق وحدة ورا الثانية، وأشوفج دوم فخورة بنفسج وبكل خطوة تسوينها.</p>
+    <p>وأعرف إن الحب مو بس كلمة «أحبج»؛ الحب اهتمام، وصبر، واحترام، وصدق، ومساحة كل واحد يبقى بيها على طبيعته. ولهذا أتمنى أكون وياج واضح وصادق، وأخلي أفعالي تحچي ويا كلامي. ما أريد أكون سبب ضيقة إلج، أريد أكون سبب فرحة، وأتمنى إذا اختلفنا بيوم نعرف نحچي ونتفاهم ونسمع بعض بمحبة.</p>
+    <p>تنسنيم، يا صاحبة الاسم اللي صار يخليني أبتسم، هاي الرسالة إهداء بسيط من جوشن إلج. يمكن هي مجرد كلمات على شاشة، بس كتبتها وأنا أتمنى توصل لج مشاعري وتخلّي يومج ألطف. وإذا ابتسمتي وإنتِ تقرينها، فهاي وحدها أحلى هدية إلي.</p>
+    <p>أحبج يا تنسنيم، وأتمنى تبقين بخير وفرح وراحة بال. الله يكتب لج كل شي حلو، ويبعد عنج الحزن والتعب، ويخلّي ضحكتج عامرة بأيامج. وشكراً لأنج إنتِ، ولأنج صرتِ ذكرى حلوة بقلبي تستاهل رسالة خاصة باسمج.</p>
+    <p class="signature">من جوشن إلى تنسنيم، بكل الحب ❤️<br>إنتِ حكاية حلوة بگلبي 🖤</p>
+  </article>
+  <footer>صُنعت بمحبة خصيصاً لتنسنيم 🖤❤️</footer>
+</main>
+<script>
+const wrap=document.getElementById('envelopeWrap');
+const env=document.getElementById('envelope');
+const btn=document.getElementById('openBtn');
+const msg=document.getElementById('message');
+const hint=document.getElementById('hint');
+function openLetter(){
+  env.classList.add('open');
+  msg.classList.add('visible');
+  btn.textContent='رسالتج انفتحت يا تنسنيم ❤️';
+  hint.textContent='كل كلمة هنا مكتوبة إلج بمحبة 🖤';
+  setTimeout(()=>msg.scrollIntoView({behavior:'smooth',block:'start'}),250);
+}
+wrap.addEventListener('click',openLetter);
+wrap.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openLetter();}});
+btn.addEventListener('click',openLetter);
+</script>
+</body>
+</html>
